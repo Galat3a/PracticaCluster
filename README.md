@@ -1,7 +1,7 @@
 # 1 Primero sin Cluster
 Creamos una maquina virtual a traves de vagrant para realizar la practica.
 
-´´´bash
+```bash
 Vagrant.configure("2") do |config|
   config.vm.define "practicaCluster" do |p|
       p.vm.box = "debian/bookworm64"
@@ -13,28 +13,28 @@ Vagrant.configure("2") do |config|
       SHELL
     end
   end
-´´´
+```
 
 Una vez iniciada la practica, creamos un directorio llamado practicaNoCluster:
 
 Instalamos nodejs:
 
-´´´bash 
+```bash 
 sudo apt update
 sudo apt install nodejs npm -
 //verificamos la instalación
 node -v
 npm -v
-´´´
+```
 
 <img src="./capturas/1.png>
 
 Dentro del directorio ejecutaréis 2 comandos:
 
-´´´bash 
+```bash 
 npm init
 npm install express
-´´´
+```
 <img src=./capturas/2.png>
 <img src=./capturas/3.png>
 <img src=./capturas/4.png>
@@ -45,9 +45,9 @@ Una vez instalado, cremos nuetra aplicacion js, llamada en mi caso practicaNoCLu
 
 Ejecutamos la aplicacion con node:
 
-´´´bash 
+```bash 
 node practicNoCluster.js
-´´´
+```
 
 <img src=./capturas/6.png>
 
@@ -67,14 +67,14 @@ Y verificamos el tiempo de respuesta del navegador según el numero utilizado pa
 
 Creamos de nuevo un js, con cluster:
 
-´´´bash 
+```bash 
 sudo nano practicSiCluster.js
-´´´
+```
 Ejecutamos el  js
 
-´´´bash 
+```bash 
 node practicSiCluster.js
-´´´
+```
 <img src=./capturas/12.png>
 
 Ahora repetiremos el mismo experimento de antes, primero realizamos una solicitud al servidor
@@ -93,9 +93,9 @@ Instalamos loadtest:
 
 Ejecutamos de nuevo la aplicación con node.js SIN CLUSTER:
 
-´´´bash 
+```bash 
 node practicNoCluster.js
-´´´
+```
 
 Mientras ejecutamos la aplicación, en otro terminal realizamos la siguiente prueba de carga:
 
@@ -105,9 +105,9 @@ Mientras ejecutamos la aplicación, en otro terminal realizamos la siguiente pru
 
 Ejecutamos de nuevo la aplicación con node.js CON CLUSTER:
 
-´´´bash 
+```bash 
 node practicSiCluster.js
-´´´
+```
 Mientras ejecutamos la aplicación, en otro terminal realizamos la siguiente prueba de carga:
 
 <img src=./capturas/23.png>
@@ -123,35 +123,35 @@ CON CLUSTER
 
 Instalamos PM2 en nuestro Debian:
 
-´´´bash 
+```bash 
 npm install pm2 -g
-´´´
+```
 
 <img src=./capturas/25.png>
 
 Ejecutamos este comando para la aplicacion SIN CLUSTER
 
-´´´bash 
+```bash 
 pm2 start practicaNoCluster.js -i 0
 
-´´´
+```
 
 <img src=./capturas/26.png>
 <img src=./capturas/27.png>
 
 Detengo la aplicación con el siguiente comando:
 
-´´´bash 
+```bash 
 pm2 stop practicaNoCluster.js
-´´´
+```
 
 <img src=./capturas/28.png>
 
 Creamos el archivo Ecosystem para guardar la tarea:
 
-´´´bash 
+```bash 
 pm2 ecosystem
-´´´
+```
 
 <img src=./capturas/29.png>
 
@@ -159,57 +159,57 @@ Modificamos el archivo según nos indica la practica:
 
 <img src=./capturas/30.png>
 
-´´´bash 
+```bash 
 pm2 start ecosystem.config.js
-´´´
+```
 <img src=./capturas/31.png>
 
-´´´bash 
+```bash 
 pm2 restart practicaNoCluster.js
-´´´
+```
 
 <img src=./capturas/32.png>
 
-´´´bash 
+```bash 
 pm2 reload practicaNoCluster.js
-´´´
+```
 <img src=./capturas/33.png>
 
-´´´bash
+```bash
 pm2 stop practicaNoCluster.js
-´´´
+```
 <img src=./capturas/34.png>
 
 Cuando usemos el archivo Ecosystem:
 
-´´´bash
+```bash
 
 pm2 [start|restart|reload|stop|delete] ecosystem.config.js
 
-´´´
+```
 
 # 5 TAREA
 
-´´´bash
+```bash
 pm2 ls
-´´´
+```
 <img src=./capturas/35.png>
 <img src=./capturas/36.png>
 
 Se utiliza para ver todos los procesos que gestiona PM2, comprobar el estado de ejecución (online, stopped, errored), monitorear el consumo de CPU y memoria y conocer el tiempo de actividad de cada proceso.
 
-´´´bash
+```bash
 pm2 logs
-´´´
+```
 <img src=./capturas/37.png>
 <img src=./capturas/38.png>
 
 Sirve para ver logs en tiempo real de todas las aplicaciones manejadas por pm2, detectar errores o eventos importantes en las aplicaciones y depuración rápida sin necesidad de acceder a archivos de logs manualmente
 
 
-´´´bash
+```bash
  pm2 monit
-´´´
+```
 
 <img src=./capturas/39.png>
 
