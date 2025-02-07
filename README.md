@@ -219,3 +219,4 @@ Sirve para ver logs en tiempo real de todas las aplicaciones manejadas por pm2, 
 
  ¿Sabrías decir por qué en algunos casos concretos, como este, la aplicación sin clusterizar tiene
 mejores resultados?
+Una aplicación sin clusterizar puede ofrecer mejores resultados debido a su menor latencia. Esto se debe a que un único proceso maneja todas las solicitudes, eliminando la necesidad de coordinar múltiples procesos y distribuyendo la carga de manera más directa. Al evitar la sobrecarga asociada con la comunicación interna entre procesos, se optimiza el tiempo de respuesta y se reducen los recursos consumidos en la gestión de concurrencia.
